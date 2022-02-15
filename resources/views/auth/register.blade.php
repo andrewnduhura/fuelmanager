@@ -8,72 +8,118 @@
 
         <!-- Validation Errors -->
         <x-auth-validation-errors class="mb-4" :errors="$errors" />
+        <html>
+
+        <!-- Font Awesome -->
+        <link rel="stylesheet" href="{{ asset 'plugins/fontawesome-free/css/all.min.css' }}">
+        <!-- Ionicons -->
+        <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+        <!-- icheck bootstrap -->
+        <link rel="stylesheet" href="{{ asset 'plugins/icheck-bootstrap/icheck-bootstrap.min.css' }}">
+        <!-- Theme style -->
+        <link rel="stylesheet" href="{{ asset 'dist/css/adminlte.min.css' }}">
+        <!-- Google Font: Source Sans Pro -->
+        <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
+        </head>
+        <body class="hold-transition register-page">
+        <div class="register-box">
+        <div class="register-logo">
+            <a href=""><b>Admin</b>LTE</a>
+        </div>
+        <div class="card">
+            <div class="card-body register-card-body">
+            <p class="login-box-msg">Register a new membership</p>
 
         <form method="POST" action="{{ route('register') }}">
             @csrf
 
             <!-- First Name -->
-            <div>
-                <x-label for="firstname" :value="__('First Name')" />
-
-                <x-input id="firstname" class="block mt-1 w-full" type="text" name="firstname" :value="old('firstname')" required autofocus />
+            <div class="input-group mb-3">
+                    <input type="text" id="firstname" name="firstname" class="form-control" placeholder="First name">
+                <div class="input-group-append">
+                    <div class="input-group-text">
+                        <span class="fas fa-user"></span>
+                    </div>
+                </div>
             </div>
 
              <!-- Last Name -->
-             <div>
-                <x-label for="lastname" :value="__('Last Name')" />
-
-                <x-input id="lastname" class="block mt-1 w-full" type="text" name="lastname" :value="old('lastname')" required autofocus />
+            <div class="input-group mb-3">
+                <input type="text" id="lastname" name="lastname" class="form-control" placeholder="Last name">
+                    <div class="input-group-append">
+                        <div class="input-group-text">
+                            <span class="fas fa-user"></span>
+                        </div>
+                    </div>  
             </div>
-            
-            <!-- Role -->
-            <div class="mt-4">
-                <label for="role" class="block mt-1 w-full">{{ __('SelectRole') }}</label>
 
-                <select name="role" id="" class="">
+            <!-- Role -->
+            <div class="input-group mb-3">
+                <label for="role" class="">{{ __('SelectRole') }}</label> </br>
+
+                <select name="role" id="" class="form-control">
                     <option value="Accountant">Accountant</option>
                     <option value="Manager">Manager</option>
                 </select>
             </div>    
 
             <!-- Email Address -->
-            <div class="mt-4">
-                <x-label for="email" :value="__('Email')" />
-
-                <x-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required />
+            <div class="input-group mb-3">
+                <x-input id="email" class="form-control" type="email" 
+                                    name="email" :value="old('email')" placeholder="Email" required />
+                    <div class="input-group-append">
+                        <div class="input-group-text">
+                             <span class="fas fa-envelope"></span>
+                        </div>
+                    </div>
             </div>
-             <!-- Phone Number -->
-             <div class="mt-4">
-                <x-label for="phone" :value="__('Phone')" />
 
-                <x-input id="phone" class="block mt-1 w-full" type="text" name="phone" :value="old('email')" required />
+             <!-- Phone Number -->
+            <div class="input-group mb-3">
+                    <x-input id="phone" class="form-control" type="text" name="phone" 
+                        :value="old('email')" placeholder="Phone Number" required />
+                    <div class="input-group-append">
+                        <div class="input-group-text">
+                             <span class="fas fa-phone"></span>
+                        </div>
+                    </div>
             </div>
 
             <!-- Password -->
-            <div class="mt-4">
-                <x-label for="password" :value="__('Password')" />
-
-                <x-input id="password" class="block mt-1 w-full"
+            <div class="input-group mb-3">
+                <x-input id="password" class="form-control"
                                 type="password"
                                 name="password"
-                                required autocomplete="new-password" />
+                                required autocomplete="new-password"
+                                placeholder="Password" />
+                <div class="input-group-append">
+                    <div class="input-group-text">
+                        <span class="fas fa-lock"></span>
+                    </div>
+                </div>
             </div>
 
             <!-- Confirm Password -->
-            <div class="mt-4">
-                <x-label for="password_confirmation" :value="__('Confirm Password')" />
-
-                <x-input id="password_confirmation" class="block mt-1 w-full"
+            <div class="input-group mb-3">
+                    <x-input id="password_confirmation" class="form-control"
                                 type="password"
-                                name="password_confirmation" required />
-            </div>
+                                name="password_confirmation" required 
+                                placeholder="Retype password" />
+                        <div class="input-group-append">
+                            <div class="input-group-text">
+                                <span class="fas fa-lock"></span>
+                            </div>
+                        </div>
+                    </div>
 
             <div class="flex items-center justify-end mt-4">
                 <a class="underline text-sm text-gray-600 hover:text-gray-900" href="{{ route('login') }}">
                     {{ __('Already registered?') }}
                 </a>
 
-                <x-button class="ml-4">
+
+            <div class="col-4">
+                <x-button class="ml-4 btn btn-primary btn-block">
                     {{ __('Register') }}
                 </x-button>
             </div>
