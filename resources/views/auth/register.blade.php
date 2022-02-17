@@ -1,23 +1,19 @@
 <x-guest-layout>
-    <x-auth-card>
-        <x-slot name="logo">
-            <a href="/">
-                <x-application-logo class="w-20 h-20 fill-current text-gray-500" />
-            </a>
-        </x-slot>
+    
+
 
         <!-- Validation Errors -->
         <x-auth-validation-errors class="mb-4" :errors="$errors" />
         <html>
 
         <!-- Font Awesome -->
-        <link rel="stylesheet" href="{{ asset 'plugins/fontawesome-free/css/all.min.css' }}">
+        <link rel="stylesheet" href="{{ asset ('plugins/fontawesome-free/css/all.min.css') }}">
         <!-- Ionicons -->
         <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
         <!-- icheck bootstrap -->
-        <link rel="stylesheet" href="{{ asset 'plugins/icheck-bootstrap/icheck-bootstrap.min.css' }}">
+        <link rel="stylesheet" href="{{ asset ('plugins/icheck-bootstrap/icheck-bootstrap.min.css') }}">
         <!-- Theme style -->
-        <link rel="stylesheet" href="{{ asset 'dist/css/adminlte.min.css' }}">
+        <link rel="stylesheet" href="{{ asset ('dist/css/adminlte.min.css') }}">
         <!-- Google Font: Source Sans Pro -->
         <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
         </head>
@@ -124,5 +120,5 @@
                 </x-button>
             </div>
         </form>
-    </x-auth-card>
+ 
 </x-guest-layout>
