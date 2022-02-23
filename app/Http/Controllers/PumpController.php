@@ -2,11 +2,17 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\pump;
+use App\Models\Pump;
+use App\Models\Products;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class PumpController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
     /**
      * Display a listing of the resource.
      *
@@ -14,7 +20,14 @@ class PumpController extends Controller
      */
     public function index()
     {
-        //
+        //$pumps = DB::table('pumps')->where('pump_id', $id);
+        $arr['pumps'] = Pump::all();
+        // print_r($arr) ;
+        $arr['pumps'] = DB::table('pumps')
+                    ->join('products','pumps.product_id',"=",'products.id')
+                    ->select('*')
+                    ->get();
+       return view('appviews.pumps.pumps')->with($arr);
     }
 
     /**
@@ -25,6 +38,8 @@ class PumpController extends Controller
     public function create()
     {
         //
+        $arr['products'] = Products::all();
+        return view('appviews.pumps.add_pump')->with($arr);
     }
 
     /**
@@ -36,6 +51,11 @@ class PumpController extends Controller
     public function store(Request $request)
     {
         //
+        $new_pump = new Pump();
+        $new_pump->pump_name = $request->pump_name;
+        $new_pump->product_id = $request->product_id;
+        $new_pump->save();
+        return redirect()->route('pumps.index');
     }
 
     /**
@@ -44,7 +64,7 @@ class PumpController extends Controller
      * @param  \App\Models\pump  $pump
      * @return \Illuminate\Http\Response
      */
-    public function show(pump $pump)
+    public function show(Pump $pump)
     {
         //
     }
@@ -55,9 +75,9 @@ class PumpController extends Controller
      * @param  \App\Models\pump  $pump
      * @return \Illuminate\Http\Response
      */
-    public function edit(pump $pump)
+    public function edit(Pump $pump)
     {
-        //
+        //$song = DB::table('songs')->where('SongID', $id)->first()
     }
 
     /**
@@ -67,7 +87,7 @@ class PumpController extends Controller
      * @param  \App\Models\pump  $pump
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, pump $pump)
+    public function update(Request $request, Pump $pump)
     {
         //
     }
@@ -78,7 +98,7 @@ class PumpController extends Controller
      * @param  \App\Models\pump  $pump
      * @return \Illuminate\Http\Response
      */
-    public function destroy(pump $pump)
+    public function destroy(Pump $pump)
     {
         //
     }

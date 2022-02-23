@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\MeterBook;
+use App\Models\OpeningMeter;
 use Illuminate\Http\Request;
 
-class MeterBookController extends Controller
+class OpeningMeterController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -41,10 +41,10 @@ class MeterBookController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\MeterBook  $meterBook
+     * @param  \App\Models\OpeningMeter  $openingMeter
      * @return \Illuminate\Http\Response
      */
-    public function show(MeterBook $meterBook)
+    public function show(OpeningMeter $openingMeter)
     {
         //
     }
@@ -52,10 +52,10 @@ class MeterBookController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\MeterBook  $meterBook
+     * @param  \App\Models\OpeningMeter  $openingMeter
      * @return \Illuminate\Http\Response
      */
-    public function edit(MeterBook $meterBook)
+    public function edit(OpeningMeter $openingMeter)
     {
         //
     }
@@ -64,10 +64,10 @@ class MeterBookController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\MeterBook  $meterBook
+     * @param  \App\Models\OpeningMeter  $openingMeter
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, MeterBook $meterBook)
+    public function update(Request $request, OpeningMeter $openingMeter)
     {
         //
     }
@@ -75,10 +75,10 @@ class MeterBookController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\MeterBook  $meterBook
+     * @param  \App\Models\OpeningMeter  $openingMeter
      * @return \Illuminate\Http\Response
      */
-    public function destroy(MeterBook $meterBook)
+    public function destroy(OpeningMeter $openingMeter)
     {
         //
     }

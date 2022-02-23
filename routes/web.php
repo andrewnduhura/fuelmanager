@@ -23,4 +23,7 @@ Route::get('/dashboard', function () {
 
 require __DIR__.'/auth.php';
 
-Route::resource('products', ProductsController::class);
+Route::resources([
+    'products'=>ProductsController::class,
+    'pumps'=>PumpController::class,
+]);

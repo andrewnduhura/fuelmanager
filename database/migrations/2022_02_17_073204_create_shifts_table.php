@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class ExpensesCategory extends Migration
+class CreateShiftsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,10 @@ class ExpensesCategory extends Migration
      */
     public function up()
     {
-        //
-        Schema::create('expenses_category', function (Blueprint $table) {
-            $table->id('category_id');
-            $table->string('category');
+        Schema::create('shifts', function (Blueprint $table) {
+            $table->id('shift_id');
+            $table->string('shift');
+            $table->string('shift_description');
             $table->timestamps();
         });
     }
@@ -28,6 +28,6 @@ class ExpensesCategory extends Migration
      */
     public function down()
     {
-        //
+        Schema::dropIfExists('shifts');
     }
 }

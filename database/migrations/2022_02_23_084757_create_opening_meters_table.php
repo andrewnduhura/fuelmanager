@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreatePricesTable extends Migration
+class CreateOpeningMetersTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,13 +13,18 @@ class CreatePricesTable extends Migration
      */
     public function up()
     {
-        Schema::create('prices', function (Blueprint $table) {
-            $table->id('new_id');
-            $table->date('change_price_date');
-            //pump whose price has changed
+        Schema::create('opening_meters', function (Blueprint $table) {
+            $table->id('open_id');
+            $table->date('opening_date');
+            //shift
+            $table->unsignedBigInteger('shift_id');
+            $table->foreign('shift_id')->references('shift_id')->on('shifts');
+            //pump
             $table->unsignedBigInteger('pump_id');
             $table->foreign('pump_id')->references('pump_id')->on('pumps');
-            $table->double('new_price',8,2);
+            //meter count
+            $table->double('opening_meter',10,2);
+
             $table->timestamps();
         });
     }
@@ -31,6 +36,6 @@ class CreatePricesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('prices');
+        Schema::dropIfExists('opening_meters');
     }
 }
