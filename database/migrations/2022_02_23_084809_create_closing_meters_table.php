@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateMeterBooksTable extends Migration
+class CreateClosingMetersTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,15 +13,18 @@ class CreateMeterBooksTable extends Migration
      */
     public function up()
     {
-        Schema::create('meter_books', function (Blueprint $table) {
-            $table->id('trans_id');
-            $table->date('trans_date');
-            $table->string('shift');
+        Schema::create('closing_meters', function (Blueprint $table) {
+            $table->id('close_id');
+            $table->date('closing_date');
+            //shift
+            $table->unsignedBigInteger('shift_id');
+            $table->foreign('shift_id')->references('shift_id')->on('shifts');
+            //pump
             $table->unsignedBigInteger('pump_id');
             $table->foreign('pump_id')->references('pump_id')->on('pumps');
-            $table->double('opening_meter',10,2);
+            //meter count
             $table->double('closing_meter',10,2);
-            $table->double('meter_litres',10,2);
+            
             $table->timestamps();
         });
     }
@@ -33,6 +36,6 @@ class CreateMeterBooksTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('meter_books');
+        Schema::dropIfExists('closing_meters');
     }
 }

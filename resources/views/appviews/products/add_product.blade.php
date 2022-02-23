@@ -12,5 +12,6 @@
     <input type="submit" value="Save">
 </form>
 <a href="{{ route('products.index') }}">View Products</a>
+<a href="{{ route('dashboard') }}">Home</a>
 
 @endsection

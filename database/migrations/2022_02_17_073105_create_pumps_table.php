@@ -18,6 +18,7 @@ class CreatePumpsTable extends Migration
             $table->string('pump_name');
             $table->unsignedBigInteger('product_id');
             $table->foreign('product_id')->references('id')->on('products');
+            $table->integer('pump_status')->default(1);
             $table->timestamps();
         });
     }
