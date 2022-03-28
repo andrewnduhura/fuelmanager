@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\Price;
+use App\Models\Products;
+use App\Models\Pump;
 use Illuminate\Http\Request;
 
 class PriceController extends Controller
@@ -25,6 +27,9 @@ class PriceController extends Controller
     public function create()
     {
         //
+        $arr['products'] = Products::all();
+        $arr['pumps'] = Pump::all();
+        return view('appviews.pumps.setprice')->with($arr);
     }
 
     /**
@@ -36,6 +41,11 @@ class PriceController extends Controller
     public function store(Request $request)
     {
         //
+        $new_price = new Price();
+        $new_price->pump_id = $request->pump;
+        $new_price->new_price = $request->price;
+        $new_price->save();
+        return redirect()->route('price.create');
     }
 
     /**

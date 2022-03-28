@@ -26,4 +26,7 @@ require __DIR__.'/auth.php';
 Route::resources([
     'products'=>ProductsController::class,
     'pumps'=>PumpController::class,
+    'shifts'=>ShiftController::class,
+    'sales'=>SalesBookController::class,
+    'price'=>PriceController::class,
 ]);

@@ -14,7 +14,7 @@ class CreatePricesTable extends Migration
     public function up()
     {
         Schema::create('prices', function (Blueprint $table) {
-            $table->id('new_id');
+            $table->id('id');
             $table->date('change_price_date');
             //pump whose price has changed
             $table->unsignedBigInteger('pump_id');

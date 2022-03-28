@@ -25,7 +25,7 @@ class PumpController extends Controller
         // print_r($arr) ;
         $arr['pumps'] = DB::table('pumps')
                     ->join('products','pumps.product_id',"=",'products.id')
-                    ->select('*')
+                    ->select('pumps.id','pumps.pump_name','products.product_alias')
                     ->get();
        return view('appviews.pumps.pumps')->with($arr);
     }
@@ -78,6 +78,9 @@ class PumpController extends Controller
     public function edit(Pump $pump)
     {
         //$song = DB::table('songs')->where('SongID', $id)->first()
+        $arr['pumps'] = $pump;
+        $arr['products'] = Products::all();
+        return view('appviews.pumps.edit_pump')->with($arr);
     }
 
     /**
@@ -89,7 +92,11 @@ class PumpController extends Controller
      */
     public function update(Request $request, Pump $pump)
     {
-        //
+        //$product->product_name = $request->input('product_name');
+        $pump->pump_name = $request->pump_name;
+        $pump->product_id = $request->product_id;
+        $pump->save();
+        return redirect()->route('pumps.index')->with("success","Data updated");
     }
 
     /**

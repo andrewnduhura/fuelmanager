@@ -203,13 +203,13 @@
                 </a>
               </li>
               <li class="nav-item">
-                <a href="{{ route('products.create') }}" class="nav-link">
+                <a href="{{ route('products.index') }}" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Add Product</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="{{ route('pumps.create') }}" class="nav-link">
+                <a href="{{ route('pumps.index') }}" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Add Pump</p>
                 </a>
@@ -227,15 +227,15 @@
                 </a>
               </li>
               <li class="nav-item">
-                <a href="pages/layout/fixed-footer.html" class="nav-link">
+                <a href="{{ route('shifts.index') }}" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
-                  <p>Fixed Footer</p>
+                  <p>Add shifts</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="pages/layout/collapsed-sidebar.html" class="nav-link">
+                <a href="{{ route('price.create') }}" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
-                  <p>Collapsed Sidebar</p>
+                  <p>Set price</p>
                 </a>
               </li>
             </ul>
@@ -260,13 +260,13 @@
                 </a>
                 <ul class="nav nav-treeview">
                   <li class="nav-item">
-                    <a href="#" class="nav-link">
+                    <a href="{{ route('sales.index') }}" class="nav-link">
                       <i class="far fa-dot-circle nav-icon"></i>
                       <p>Sales</p>
                     </a>
                   </li>
                   <li class="nav-item">
-                    <a href="#" class="nav-link">
+                    <a href="" class="nav-link">
                       <i class="far fa-dot-circle nav-icon"></i>
                       <p>Invoice</p>
                     </a>
@@ -274,7 +274,7 @@
                   <li class="nav-item">
                     <a href="#" class="nav-link">
                       <i class="far fa-dot-circle nav-icon"></i>
-                      <p>Paynents</p>
+                      <p>Payments</p>
                     </a>
                   </li>
                 </ul>

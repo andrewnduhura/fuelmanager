@@ -9,4 +9,8 @@ class Products extends Model
 {
     use HasFactory;
     public $table = 'products';
+
+    public function pumps(){
+        $this->hasMany('App\Pump');
+    }
 }

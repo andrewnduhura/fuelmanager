@@ -15,6 +15,8 @@ class ShiftController extends Controller
     public function index()
     {
         //
+        $arr['shifts'] = Shift::all();
+        return view('appviews.shifts.shifts')->with($arr);
     }
 
     /**
@@ -25,6 +27,7 @@ class ShiftController extends Controller
     public function create()
     {
         //
+        return view('appviews.shifts.add_shifts');
     }
 
     /**
@@ -36,6 +39,11 @@ class ShiftController extends Controller
     public function store(Request $request)
     {
         //
+        $new_shift = new shift();
+        $new_shift->shift = $request->shift;
+        $new_shift->shift_description = $request->notes;
+        $new_shift->save();
+        return redirect()->route('shifts.index')->with('success','shift added successfully');
     }
 
     /**

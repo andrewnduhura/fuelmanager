@@ -14,9 +14,9 @@ class CreateSalesBooksTable extends Migration
     public function up()
     {
         Schema::create('sales_books', function (Blueprint $table) {
-            $table->id('sales-id');
+            $table->id('id');
             $table->date('sales_date');
-            //sift
+            //shift
             $table->unsignedBigInteger('shift_id');
             $table->foreign('shift_id')->references('shift_id')->on('shifts');
             //pump
@@ -25,6 +25,10 @@ class CreateSalesBooksTable extends Migration
             //product per pump
             $table->unsignedBigInteger('product_id');
             $table->foreign('product_id')->references('id')->on('products');
+            //opening meter
+            $table->double('opening_meter',10,2);
+            //closing meter reading
+            $table->double('closing_meter',10,2);
             //difference in the meter readings
             $table->double('litres',10,2);
             //rate per liter->from prices

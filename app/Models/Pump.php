@@ -9,4 +9,8 @@ class Pump extends Model
 {
     use HasFactory;
     public $table = 'pumps';
+
+    public function products(){
+        $this->belongsTo('App\Products');
+    }
 }

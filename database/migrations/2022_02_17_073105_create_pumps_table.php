@@ -14,7 +14,7 @@ class CreatePumpsTable extends Migration
     public function up()
     {
         Schema::create('pumps', function (Blueprint $table) {
-            $table->id('pump_id');
+            $table->id('id');
             $table->string('pump_name');
             $table->unsignedBigInteger('product_id');
             $table->foreign('product_id')->references('id')->on('products');

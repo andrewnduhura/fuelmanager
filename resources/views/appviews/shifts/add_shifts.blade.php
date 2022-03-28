@@ -10,12 +10,13 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1 class="m-0 text-dark">Pumps</h1>
+            <h1 class="m-0 text-dark">Masters</h1>
           </div><!-- /.col -->
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
-              <li class="breadcrumb-item"><a href="{{ route('pumps.index') }}">Pumps</a></li>
-              <li class="breadcrumb-item active">Add Pumps</li>
+              <li class="breadcrumb-item"><a href="{{ route('dashboard') }}">Dashboard</a></li>
+              <li class="breadcrumb-item"><a href="{{ route('shifts.index') }}">View Shifts</a></li>
+              <li class="breadcrumb-item active">Add shifts</li>
             </ol>
           </div><!-- /.col -->
         </div><!-- /.row -->
@@ -26,35 +27,28 @@
 
     <div class="container-fluid">
 
-    <form method="post" action="{{ route('pumps.store') }}">
+    <form method="post" action="{{ route('shifts.store') }}">
     @csrf
 
     <div class="form-group">
     <div class="row">
-      <label for="pump_name" class="col-md-3">Pump Name</label>
-      <div class="col-md-6"><input type ="text" name="pump_name" id="pump_name" class="form-control"></div>
+      <label for="shift" class="col-md-3">Shift</label>
+      <div class="col-md-6"><input type ="text" name="shift" id="shift" class="form-control"></div>
       <div class="clearfix"></div>
     </div>
     </div>
 
     <div class="form-group">
     <div class="row">
-      <label for="product_alias" class="col-md-3">Product Identifier</label>
-      <div class="col-md-6">
-          <select name="product_id" id="product_id" class="form-control">
-        <option value="">Choose product</option>
-        @foreach($products as $prdct)
-        <option value="{{ $prdct->id }}">{{ $prdct->product_alias }}</option>
-        @endforeach
-    </select>
-</div>
+      <label for="notes" class="col-md-3">Description</label>
+      <div class="col-md-6"><textarea name="notes" class="form-control" id="notes"></textarea></div>
       <div class="clearfix"></div>
     </div>
     </div>
 
     <div class="form-froup">
       <div class="row">
-        <div class="col-md-6"><input type="submit" class="btn btn-info" value="Add Pump"></div>
+        <div class="col-md-6"><input type="submit" class="btn btn-info" value="Add shift"></div>
       </div>
     </div>
 
@@ -64,5 +58,6 @@
     </div>
     </section>
  </div>
+
 
 @endsection

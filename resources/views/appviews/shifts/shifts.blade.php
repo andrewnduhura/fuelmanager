@@ -13,7 +13,7 @@
           </div><!-- /.col -->
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
-              <li class="breadcrumb-item"><a href="#">Dashboard</a></li>
+              <li class="breadcrumb-item"><a href="{{ route('dashboard') }}">Home</a></li>
               <li class="breadcrumb-item active">Masters</li>
             </ol>
           </div><!-- /.col -->
@@ -31,7 +31,7 @@
             <!-- small box -->
             <div class="small-box bg-info">
               <div class="inner">
-                <h3>{{ count($products)}} </h3>
+                <h3>150</h3>
 
                 <p>New Orders</p>
               </div>
@@ -90,7 +90,7 @@
         </div>
         <!-- /.row -->
 
-        <a href="{{ route('products.create') }}"><button type="button" class="btn btn-block btn-outline-primary btn-lg">Add Product</button></a>
+        <a href="{{ route('shifts.create') }}"><button type="button" class="btn btn-block btn-outline-primary btn-lg">Add Shift</button></a>
 
 <p>
     @if(\Session::has('success'))
@@ -100,7 +100,7 @@
         <!--Main body/contect on Add product log-->
         <div class="card">
               <div class="card-header">
-                <h3 class="card-title">Products</h3>
+                <h3 class="card-title">Pumps</h3>
               </div>
               <!-- /.card-header -->
               <div class="card-body">
@@ -109,29 +109,33 @@
                     <tr>
                      
                       <th style="width: 200px">ID</th>
-                      <th style="width: 200px">Product Name</th>
-                      <th style="width: 300px">Identifier</th>
-                      <th style="width: 500px" colspan="2">Operation</th>
+                      <th style="width: 200px">Shift</th>
+                      <th style="width: 300px">Description</th>
+                      
                     </tr>
                   </thead>
                   <tbody>
-                    @foreach($products as $product)
-                    <tr>
-                      <td>{{ $product->id }}</td>
-                      <td>{{ $product->product_name }}</td>
-                      <td>{{ $product->product_alias }}</td>
-                      <td>
-                      <a href="{{ route ('products.edit',$product->id) }}" class="btn btn-primary">Edit</a></td>
-                      <td><form method="post" action="{{ route('products.destroy' , $product->id) }}">
-                @csrf
-            @method('delete')
-            <button type="submit" class="btn  btn-danger" >Delete</button>
-        </form></td>
+                      @if(is_null($shifts))
+                      
+                      <tr>
+                          <td colspan="4">No shifts registered yet</td>
+                        </tr>
+                        @else
+                    @foreach($shifts as $shift)
+                <tr>
+                     <td>{{ $shift->shift_id }}</td>
+                     <td>{{ $shift->shift }}</td>
+                     <td>{{ $shift->shift_description }}</td>
+
                       
                         </div>
+                        
                     </tr>
                     
                       @endforeach
+
+                     
+                      @endif
                   </tbody>
                 </table>
               </div>
@@ -150,7 +154,6 @@
         
       </div><!-- /.container-fluid -->
     </section>
-
-
 </div>
+
 @endsection
